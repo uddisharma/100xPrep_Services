@@ -1,7 +1,11 @@
 import nodemailer from 'nodemailer';
 import ejs from 'ejs';
 import * as path from 'path';
+import dotenv from 'dotenv';
 const __basedir = path.resolve(__dirname, '..');
+
+dotenv.config();
+
 
 interface MailOptions {
     from?: string;
@@ -21,8 +25,8 @@ const transporter = nodemailer.createTransport({
     port: parseInt("586"),
     secure: true,
     auth: {
-        user: "uddibhardwaj08@gmail.com" as string,
-        pass: "jjakxuuduudiywaz" as string
+        user: process.env.SENDEREMAIL as string,
+        pass: process.env.SENDERPASS as string
     }
 });
 
